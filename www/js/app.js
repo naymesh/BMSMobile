@@ -13,6 +13,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   return {
     getBaseUrl : function() {
       return "http://localhost:19080/bmsapi";
+      // For android emulator uncomment following line and comment the above line
+      // return "http://10.0.2.2:19080/bmsapi";
     },
 
     getSelectedCrop : function(crop) {
