@@ -1,0 +1,11 @@
+<ion-view view-title="Programs">
+  <ion-content>
+      <ion-list class="list">
+      	<ion-item ng-repeat="program in programs" class="item item-avatar" href="#/app/studyList/{{program.cropType}}">
+        	<img src="img/ionic.png">
+        	<h2>{{program.projectName}} ({{program.cropType}})</h2>
+			<p>{{program.startDate}}</p>
+        </ion-item> 
+    </ion-list>
+  </ion-content>
+</ion-view>
