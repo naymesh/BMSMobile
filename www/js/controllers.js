@@ -36,8 +36,13 @@ angular.module('starter.controllers', [])
 .controller('StudyListController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
   contextService.setSelectedCrop($stateParams.cropType);
+  var studyListURL = contextService.getBaseUrl() + '/study/'+ contextService.getSelectedCrop() + '/list';
 
-  $http({ method: 'GET', url: contextService.getBaseUrl() + '/study/'+ contextService.getSelectedCrop() + '/list' }).
+  if($stateParams.programUniqueId) {
+    studyListURL += "?programUniqueId=" + $stateParams.programUniqueId;
+  }
+
+  $http({ method: 'GET', url: studyListURL }).
       success(function (data, status, headers, config) {
         $scope.studyList = data;
       }).

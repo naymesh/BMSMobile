@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
   .state('app.studyList', {
-      url: "/studyList/:cropType",
+      url: "/studyList/:cropType?programUniqueId",
       views: {
         'menuContent': {
           templateUrl: "templates/studyList.html",
