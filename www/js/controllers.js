@@ -42,40 +42,33 @@ angular.module('starter.controllers', [])
     studyListURL += "?programUniqueId=" + $stateParams.programUniqueId;
   }
 
-  $http({ method: 'GET', url: studyListURL }).
-      success(function (data, status, headers, config) {
+  $http.get(studyListURL).success(
+    function (data, status, headers, config) {
         $scope.studyList = data;
-      }).
-      error(function (data, status, headers, config) {
-        //TODO
-      });
+  });
+
 }])
 
 .controller('ProgramListController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
-  $http({ method: 'GET', url: contextService.getBaseUrl() + '/program/list' }).
-      success(function (data, status, headers, config) {
+  $http.get(contextService.getBaseUrl() + '/program/list').success(
+    function (data, status, headers, config) {
         $scope.programs = data;
-      }).
-      error(function (data, status, headers, config) {
-        //TODO
-      });
+   });
+
 }])
 
 .controller('StudyDetailsController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
   //TODO replace with get study details service. For now just get list, find by id and display summary.
-  $http({ method: 'GET', url: contextService.getBaseUrl() + '/study/'+ contextService.getSelectedCrop() + '/list' }).
-    success(function (data, status, headers, config) {
+  $http.get(contextService.getBaseUrl() + '/study/'+ contextService.getSelectedCrop() + '/list').success(
+    function (data, status, headers, config) {
       for(var i = 0; i <  data.length; i++) {
         if(data[i].id == parseInt($stateParams.studyId, 10)) {
           $scope.studyDetails = data[i];
           break;
         }
       }
-    }).
-    error(function (data, status, headers, config) {
-      //TODO
     });
 }])
 
