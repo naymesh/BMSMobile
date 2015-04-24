@@ -1,11 +1,44 @@
 <ion-view view-title="Study Details">
-  <ion-content>
-    <strong>Id:</strong> {{studyDetails.id}}<br/>
-    <strong>Name:</strong> {{studyDetails.name}}<br/>
-    <strong>Title:</strong> {{studyDetails.title}}<br/>
-    <strong>Objective:</strong> {{studyDetails.objective}}<br/>
-    <strong>Type:</strong> {{studyDetails.type}}<br/>
-    <strong>Start Date:</strong> {{studyDetails.startDate}}<br/>
-    <strong>End Date:</strong> {{studyDetails.endDate}}
+	<ion-content>
+		<div class="card">
+			<div class="item item-text-wrap">
+		    	<strong>Name:</strong> {{studyDetails.name}} 
+		    	<strong>Title:</strong> {{studyDetails.title}} 
+		    	<strong>Objective:</strong> {{studyDetails.objective}} 
+		    	<strong>Type:</strong> {{studyDetails.type}} 
+		    	<strong>Start Date:</strong> {{studyDetails.startDate}} 
+		    	<strong>End Date:</strong> {{studyDetails.endDate}}
+			</div>
+		</div>
+		<h3>Measurements</h3>
+		
+		<div class="card">
+	  		<div class="item item-text-wrap">
+	  			<div class="row">
+	  				<div class="col">GID</div>
+					<div class="col">Designation</div>
+					<div class="col">Entry Number</div>
+					<div class="col">Entry Type</div>
+					<div class="col">Plot</div>
+					<div class="col">Replication</div>
+					<div class="col">Environment</div>
+					<div class="col" ng-repeat="measurement in observationList[0].measurements">
+				 		{{measurement.traitName}}
+			 		</div>
+			 	</div>
+				<div class="row" ng-repeat="observation in observationList">
+					<div class="col">{{observation.germplasmId}}</div>
+					<div class="col">{{observation.germplasmDesignation}}</div>
+					<div class="col">{{observation.enrtyNumber}}</div>
+					<div class="col">{{observation.entryType}}</div>
+					<div class="col">{{observation.plotNumber}}</div>
+					<div class="col">{{observation.replicationNumber}}</div>
+					<div class="col">{{observation.environmentNumber}}</div>
+					<div class="col" ng-repeat="measurement in observation.measurements">
+				  		{{measurement.value}}
+					</div>
+				</div>
+	  		</div>
+	  	</div>
   </ion-content>
 </ion-view>

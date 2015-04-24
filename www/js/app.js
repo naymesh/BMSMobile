@@ -9,6 +9,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .factory('contextService', function() {
 
   var selectedCrop = '';
+  var selectedProgramId = '';
 
   return {
     getBaseUrl : function() {
@@ -23,6 +24,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     setSelectedCrop : function(crop) {
       selectedCrop = crop;
+    },
+
+    getSelectedProgramId : function(id) {
+      return selectedProgramId;
+    },
+
+    setSelectedProgramId : function(id) {
+      selectedProgramId = id;
     }
 
   };
