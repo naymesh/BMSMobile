@@ -1,44 +1,17 @@
 <ion-view view-title="Study Details">
 	<ion-content>
-		<div class="card">
-			<div class="item item-text-wrap">
-		    	<strong>Name:</strong> {{studyDetails.name}} 
-		    	<strong>Title:</strong> {{studyDetails.title}} 
-		    	<strong>Objective:</strong> {{studyDetails.objective}} 
-		    	<strong>Type:</strong> {{studyDetails.type}} 
-		    	<strong>Start Date:</strong> {{studyDetails.startDate}} 
-		    	<strong>End Date:</strong> {{studyDetails.endDate}}
-			</div>
-		</div>
-		<h3>Measurements</h3>
-		
-		<div class="card">
-	  		<div class="item item-text-wrap">
-	  			<div class="row">
-	  				<div class="col">GID</div>
-					<div class="col">Designation</div>
-					<div class="col">Entry Number</div>
-					<div class="col">Entry Type</div>
-					<div class="col">Plot</div>
-					<div class="col">Replication</div>
-					<div class="col">Environment</div>
-					<div class="col" ng-repeat="measurement in observationList[0].measurements">
-				 		{{measurement.traitName}}
-			 		</div>
-			 	</div>
-				<div class="row" ng-repeat="observation in observationList">
-					<div class="col">{{observation.germplasmId}}</div>
-					<div class="col">{{observation.germplasmDesignation}}</div>
-					<div class="col">{{observation.enrtyNumber}}</div>
-					<div class="col">{{observation.entryType}}</div>
-					<div class="col">{{observation.plotNumber}}</div>
-					<div class="col">{{observation.replicationNumber}}</div>
-					<div class="col">{{observation.environmentNumber}}</div>
-					<div class="col" ng-repeat="measurement in observation.measurements">
-				  		{{measurement.value}}
-					</div>
-				</div>
-	  		</div>
-	  	</div>
+		 <h3>Measurements</h3>
+	     <ion-list class="list">
+	      	<ion-item ng-repeat="observation in observationList" href="#">
+	        	<h2>{{observation.germplasmDesignation}}</h2>
+				<span><strong>Entry:</strong> {{observation.enrtyNumber}}</span>
+				<span><strong>Type:</strong> {{observation.entryType}}</span>
+				<span><strong>Rep:</strong> {{observation.replicationNumber}}</span>
+				<span><strong>Env:</strong> {{observation.environmentNumber}}</span><br/>
+				<span ng-repeat="measurement in observation.measurements">
+					<strong>{{measurement.traitName}}:</strong> {{measurement.value}}<br/>
+				</span>
+	        </ion-item> 
+    	</ion-list>
   </ion-content>
 </ion-view>
