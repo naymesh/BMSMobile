@@ -9,7 +9,7 @@
 				<span><strong>Rep:</strong> {{observation.replicationNumber}}</span>
 				<span><strong>Env:</strong> {{observation.environmentNumber}}</span><br/>
 				<span ng-repeat="measurement in observation.measurements">
-					<strong>{{measurement.traitName}}:</strong> {{measurement.value}}<br/>
+					<strong>{{measurement.measurementIdentifier.trait.traitName}}:</strong> {{measurement.measurementValue}}<br/>
 				</span>
 	        </ion-item> 
     	</ion-list>
