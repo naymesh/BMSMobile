@@ -35,10 +35,7 @@ angular.module('starter.controllers', [])
 
 .controller('StudyListController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
-  contextService.setSelectedCrop($stateParams.cropType);
-  contextService.setSelectedProgramId($stateParams.programUniqueId);
-  var studyListURL = 
-    contextService.getBaseUrl() + '/study/'+ contextService.getSelectedCrop() + '/list?programUniqueId=' + contextService.getSelectedProgramId();
+  var studyListURL = contextService.getBaseUrl() + '/studies/list?programId=1';
 
   $http.get(studyListURL).success(
     function (data, status, headers, config) {
@@ -50,7 +47,7 @@ angular.module('starter.controllers', [])
 
 .controller('ProgramListController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
-  $http.get(contextService.getBaseUrl() + '/program/list').success(
+  $http.get(contextService.getBaseUrl() + '/programs').success(
     function (data, status, headers, config) {
         $scope.programs = data;
     }
@@ -60,22 +57,16 @@ angular.module('starter.controllers', [])
 
 .controller('StudyDetailsController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
-  //TODO replace with get study details service. For now just get list, find by id and display summary.
   var studyListURL = 
-    contextService.getBaseUrl() + '/study/'+ contextService.getSelectedCrop() + '/list?programUniqueId=' + contextService.getSelectedProgramId();
+    contextService.getBaseUrl() + '/studies/list?programId=1';
   
   $http.get(studyListURL).success(
     function (data, status, headers, config) {
-      for(var i = 0; i <  data.length; i++) {
-        if(data[i].id == parseInt($stateParams.studyId, 10)) {
-          $scope.studyDetails = data[i];
-          break;
-        }
-      }
+      $scope.studyDetails = data[0];
     }
   );
 
-  var studyObservationsURL = contextService.getBaseUrl() + '/study/'+ contextService.getSelectedCrop() + '/' + $stateParams.studyId + '/observations';
+  var studyObservationsURL = contextService.getBaseUrl() + '/study/123/observationunits';
   $http.get(studyObservationsURL).success(
     function (data, status, headers, config) {
         $scope.observationList = data;      

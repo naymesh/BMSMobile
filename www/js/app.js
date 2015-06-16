@@ -13,9 +13,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   return {
     getBaseUrl : function() {
-      return "http://localhost:19080/bmsapi";
-      // For android emulator uncomment following line and comment the above line
-      // return "http://10.0.2.2:19080/bmsapi";
+      return "http://private-bf609-breeding.apiary-mock.com/brapi/v1";
     },
 
     getSelectedCrop : function(crop) {
@@ -60,7 +58,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
-
   .state('app.settings', {
       url: "/settings",
       views: {
@@ -83,7 +80,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
   .state('app.studyList', {
-      url: "/studyList/:cropType?programUniqueId",
+      url: "/studyList?programId",
       views: {
         'menuContent': {
           templateUrl: "templates/studyList.html",
