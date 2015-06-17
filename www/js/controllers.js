@@ -72,6 +72,15 @@ angular.module('starter.controllers', [])
         $scope.observationList = data;      
     }
   );
+
+  $scope.saveObservations = function (observations) {
+      $http.put(studyObservationsURL, observations).success(
+        function (data, status, headers, config) {
+          alert("Server responded:" + JSON.stringify(data));      
+        }
+      );
+
+  };
 }])
 
 .controller('SettingsController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
