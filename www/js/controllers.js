@@ -35,11 +35,11 @@ angular.module('starter.controllers', [])
 
 .controller('StudyListController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
-  var studyListURL = contextService.getBaseUrl() + '/studies/list?programId=1';
+  var studyListURL = contextService.getBaseUrl() + '/studies?programId=1';
 
   $http.get(studyListURL).success(
     function (data, status, headers, config) {
-        $scope.studyList = data;
+        $scope.studyList = data.studies;
     }
   );
 
@@ -58,11 +58,11 @@ angular.module('starter.controllers', [])
 .controller('StudyDetailsController', ['$scope', '$http', '$stateParams', 'contextService', function($scope, $http, $stateParams, contextService) {
 
   var studyListURL = 
-    contextService.getBaseUrl() + '/studies/list?programId=1';
+    contextService.getBaseUrl() + '/studies?programId=1';
   
   $http.get(studyListURL).success(
     function (data, status, headers, config) {
-      $scope.studyDetails = data[0];
+      $scope.studyDetails = data.studies[0];
     }
   );
 
